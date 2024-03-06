@@ -2,27 +2,22 @@ const inputProduto = document.getElementById('input-search');
 const produtoConsultado = document.getElementById('preco-produto');
 const botaoComprar = document.querySelector('#compraProduto')
 
-// class Produtos {
-//     constructor(codigo, descricao, preco) {
-//         this.codigo = codigo
-//         this.descricao = descricao
-//         this.preco = preco
-//     }
-// }
-
-
 function consultaPreco() {
     let produtoConsultar = inputProduto.value;
 
+    if (inputProduto.value === '') {
+        produtoConsultado.innerText = 'Informe um produto.'
+        limparCampos()
+        return false
+    }
+
     const produto = produtos.filter(produto => produto.nome.startsWith(produtoConsultar.toUpperCase()));
-    const produtox = produtos.find(parseInt(produtoConsultar));
-    console.log(produtox)
-    
-    console.log(produto.length)
+
     if (produto.length != 0) {
-        produtoConsultado.innerText = produto[0].nome + ' R$'+ produto[0].preco;
+        produtoConsultado.innerText = produto[0].nome + ' R$' + produto[0].preco;
+        botaoComprar.removeAttribute('disabled')
         botaoComprar.setAttribute('style', 'background-color: green; color:white')
-    }else {
+    } else {
         produtoConsultado.innerText = 'Produto não cadastrado.'
         botaoComprar.setAttribute('disabled', 'disabled')
         botaoComprar.setAttribute('style', 'background-color: red; color:white')
@@ -53,18 +48,16 @@ const produtos = [
     },
 ];
 
+const carrinho = []
 
-function comprarProduto(){
+function comprarProduto() {
     let produtoConsultar = inputProduto.value;
-    const produto = produtos.filter(produto => produto.nome.startsWith(produtoConsultar.toUpperCase()));
-        
-    console.log(produtos.map(produto[0].nome))
+    const produto = produtos.filter(produto => produto.nome.includes(produtoConsultar.toUpperCase()));
 
-    let carrinho = []
-    carrinho.push(produto[0].nome)
-
-    console.log(carrinho)
-
+    if (produto) {
+        carrinho.push(produto)
+        console.log(carrinho)
+    }
 }
 
 function limparCampos() {
