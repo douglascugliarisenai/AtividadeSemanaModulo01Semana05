@@ -13,7 +13,7 @@ Input para informar código ou nome do produto;
 
 Botão para consultar valor;
 
-Botão para comprar produto consultad;.</p>
+Botão para comprar produto consulta;</p>
 
 
 

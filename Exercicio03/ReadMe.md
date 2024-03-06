@@ -5,15 +5,9 @@
 <h1 align="center">
     <a href="https://floripamaistec.pmf.sc.gov.br/">🔗 Floripa Mais Tec</a>
 </h1>
-<p align="center">🚀 Exercício 02: Tela de Consulta de Preços</p>
+<p align="center">🚀 Exercício 03: Evento botão comprar produto</p>
 
-<p>Adicione um evento de clique para consultar o valor do produto digitado pelo consumidor. A resposta deve ser trazida de forma dinâmica a partir de uma função, seja por alert ou alteração do innerText de uma tag de texto presente no html. Exemplo:
-
-alert('O valor do produto é: ')
-
-ou
-
-document.getElementById('preco-produto').innerText = 'O valor do produto é…'</p>
+<p>Para o botão de comprar, adicione um evento de clique. O nome do produto deve ser inserido em um array de lista de compras do usuário, ou seja, dar um ‘push’ do nome ou objeto produto (formado por nome e preço) na variável carrinho (array)</p>
 
 
 
