@@ -119,13 +119,18 @@ body {
 
 .total {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-right: 350px;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-right: 250px;
+  width: 100vh;
   margin-top: 30px;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: bolder;
   color: #373737;
+}
+
+.subtotal{
+  
 }
 
 .totalItens{

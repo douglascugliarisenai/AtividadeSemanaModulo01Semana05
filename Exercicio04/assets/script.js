@@ -1,10 +1,13 @@
-const inputProduto = document.getElementById('input-search');
 const produtoConsultado = document.getElementById('preco-produto');
 const botaoComprar = document.querySelector('#compraProduto')
 const totalCarrinho = document.querySelector('.contador')
-const valorTotalCompra = document.querySelector('.totalItens')
+const valorsubtotal = document.querySelector('.subtotal')
+const valorDesconto = document.querySelector('.desconto')
+const valorTotalCompra = document.querySelector('.totalProdutos')
+let produto = ''
 
 function consultaPreco() {
+    const inputProduto = document.getElementById('input-search');
     let produtoConsultar = inputProduto.value;
 
     if (inputProduto.value === '') {
@@ -13,7 +16,7 @@ function consultaPreco() {
         return false
     }
 
-    const produto = produtos.filter(produto => produto.nome.startsWith(produtoConsultar.toUpperCase()));
+    produto = produtos.filter(produto => produto.nome.startsWith(produtoConsultar.toUpperCase()));
 
     if (produto.length != 0) {
         produtoConsultado.innerText = produto[0].nome + ' R$' + produto[0].preco;
@@ -51,21 +54,24 @@ const produtos = [
 ];
 
 const carrinho = []
-let valorTotal = 0.00;
+let valorTotal = 0.00
+let desconto = 0.00
+let totalComDesconto = 0.00
 
 function comprarProduto() {
-    let produtoConsultar = inputProduto.value;
-    const produto = produtos.filter(produto => produto.nome.includes(produtoConsultar.toUpperCase()));
-
     if (produto) {
         carrinho.push(produto)
         let totalProdutos = carrinho.length
         let subTotal = produto[0].preco
         valorTotal += subTotal
-
-        console.log(valorTotal)
-        valorTotalCompra.innerText = 'R$ ' + valorTotal.toFixed(2)
         totalCarrinho.innerText = totalProdutos
+        desconto = valorTotal * 0.10
+        totalComDesconto = valorTotal - desconto
+
+
+        valorsubtotal.innerText = 'R$ ' + valorTotal.toFixed(2)
+        valorDesconto.innerText = 'R$ ' + desconto.toFixed(2)
+        valorTotalCompra.innerText = 'R$ ' + totalComDesconto.toFixed(2)
     }
 }
 
@@ -77,12 +83,15 @@ function limparCampos() {
 
 
 function limparCarrinho() {
-    // totalCarrinho.innerText = 'Carrinho vazio'
-    // valorTotalCompra.innerText = 'R$ 0.00'
-    // produtoConsultado.innerText = ''
-    // carrinho.splice(0)
-    // produtos.splice(0)
-    // valorTotal = 0.00
-    // botaoComprar.setAttribute('disabled', 'disabled')
-    limparCampos()
+    const inputProduto = document.getElementById('input-search');
+    totalCarrinho.innerText = 'Carrinho vazio'
+    valorTotalCompra.innerText = 'R$ 0.00'
+    valorsubtotal.innerText = 'R$ 0.00'
+    valorDesconto.innerText = 'R$ 0.00'
+    produtoConsultado.innerText = ''
+    inputProduto.value = ''
+    botaoComprar.setAttribute('style', 'background-color: #373737; color:white')
+    carrinho.splice(0, Infinity)
+    valorTotal = 0.00
+    botaoComprar.setAttribute('disabled', 'disabled')
 }
