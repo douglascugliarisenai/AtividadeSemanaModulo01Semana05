@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Floripa Mais Tec - Semana 5</title>
+</head>
+
+<body>
+  <div class="flex-container">
+    <div class="form-search">
+      <div class="titulo">
+        <span class="fs-24">Consulta de preços</span>
+      </div>
+
+      <div class="imagens">
+        <img id="imagemProduto" width="200px" height="200px"onerror="limparCarrinho()"/>
+      </div>
+
+      <div class="consulta">
+        <span id="preco-produto"></span>
+      </div>
+        <div class="inputs">
+          <input type="text" id="input-search" placeholder="Insira a descrição ou código do produto">
+        </div>
+
+        <div class="carrinho">
+          <span>Qtd Carrinho:</span>
+          <span class="contador">Carrinho vazio</span>
+          <button class="btn-limpar" onclick="limparCarrinho()">Limpar</button>
+        </div>
+
+        <div class="button">
+          <button onclick="consultaPreco()">Consultar</button>
+            <button id="compraProduto" onclick="comprarProduto()" disabled>Comprar</button>
+        </div>
+        <div class="total">
+          <div>
+            <span>Subtotal:</span>
+            <span class="subtotal">R$ 0.00</span>
+          </div>
+          <div>
+            <span>Desconto:</span>
+            <span class="desconto">R$ 0.00</span>
+          </div>
+          <div>
+            <span>Total:</span>
+            <span class="totalProdutos">R$ 0.00</span>
+          </div>
+        </div>
+    </div>
+  </div>
+<script src="./assets/script.js"></script>
+</body>
+
+</html>
